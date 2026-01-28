@@ -4218,6 +4218,18 @@ cc_binary(
 )
 
 cc_binary(
+    name = "timer_test",
+    testonly = 1,
+    srcs = ["timer.cc"],
+    linkstatic = 1,
+    malloc = "//test/util:errno_safe_allocator",
+    deps = select_gtest() + [
+        "//test/util:test_main",
+        "//test/util:test_util",
+    ],
+)
+
+cc_binary(
     name = "timerfd_test",
     testonly = 1,
     srcs = ["timerfd.cc"],
